@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C259EB61F99292F00DA8F0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C259EB51F99292F00DA8F0C /* Images.xcassets */; };
 		8C4DF9ED1E8DCA6F00CFB79A /* KohanaTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4DF9EB1E8DCA6F00CFB79A /* KohanaTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C4DF9F41E8DCAA000CFB79A /* KohanaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4DF9F31E8DCAA000CFB79A /* KohanaTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C259EB51F99292F00DA8F0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8C4DF9E81E8DCA6F00CFB79A /* KohanaTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KohanaTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C4DF9EB1E8DCA6F00CFB79A /* KohanaTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KohanaTextField.h; sourceTree = "<group>"; };
 		8C4DF9EC1E8DCA6F00CFB79A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				8C4DF9EB1E8DCA6F00CFB79A /* KohanaTextField.h */,
 				8C4DF9EC1E8DCA6F00CFB79A /* Info.plist */,
 				8C4DF9F31E8DCAA000CFB79A /* KohanaTextField.swift */,
+				8C259EB51F99292F00DA8F0C /* Images.xcassets */,
 			);
 			path = KohanaTextField;
 			sourceTree = "<group>";
@@ -124,6 +127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C259EB61F99292F00DA8F0C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

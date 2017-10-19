@@ -11,10 +11,19 @@ import UIKit
 @IBDesignable
 public class KohanaTextField: UIView {
     
+    public enum KohanaActivityStatus {
+        case inProgress
+        case success
+        case error
+        case none
+    }
+    
     private var imageView: UIImageView?
     private var placeholderLabel: UILabel?
-    private var textField: UITextField?
+    public var textField: UITextField?
     private var toggleSecureTextButton: UIButton?
+    private var activityIndicatorView: UIActivityIndicatorView?
+    private var statusImageView: UIImageView?
     
     public var textFieldDelegate: UITextFieldDelegate?
     
@@ -126,6 +135,33 @@ public class KohanaTextField: UIView {
         }
     }
     
+    public func setActiviyStatus(status: KohanaActivityStatus) {
+        switch status {
+        case .none:
+            activityIndicatorView?.stopAnimating()
+            statusImageView?.isHidden = true
+            break
+        case .inProgress:
+            activityIndicatorView?.startAnimating()
+            statusImageView?.isHidden = true
+            break
+        case .error:
+            activityIndicatorView?.stopAnimating()
+            let bundle = Bundle(for: KohanaTextField.self)
+            statusImageView?.image = UIImage(named: "ic_error_outline", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+            statusImageView?.tintColor = .red
+            statusImageView?.isHidden = false
+            break
+        case .success:
+            activityIndicatorView?.stopAnimating()
+            let bundle = Bundle(for: KohanaTextField.self)
+            statusImageView?.image = UIImage(named: "ic_done", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+            statusImageView?.tintColor = UIColor(red: 40/255.0, green: 167/255.0, blue: 69/255.0, alpha: 1)
+            statusImageView?.isHidden = false
+            break
+        }
+    }
+    
     @IBInspectable
     public var showText: String = "SHOW"
     
@@ -168,6 +204,8 @@ public class KohanaTextField: UIView {
         initImageView()
         initPlaceholderLabel()
         initTextField()
+        initActivityIndicatorView()
+        initStatusImageView()
         addClickRecognizer()
         addBorder()
         clipsToBounds = true
@@ -193,6 +231,25 @@ public class KohanaTextField: UIView {
         textField?.alpha = 0
         textField?.textColor = UIColor(red: 75/255, green: 68/255, blue: 54/255, alpha: 1)
         addSubview(textField!)
+    }
+    
+    private func initActivityIndicatorView() {
+        let size = CGSize(width: 20, height: 20)
+        let origin = CGPoint(x: bounds.width - size.width - 10, y: (bounds.height - size.height) / 2)
+        let rect = CGRect(origin: origin, size: size)
+        activityIndicatorView = UIActivityIndicatorView(frame: rect)
+        activityIndicatorView?.hidesWhenStopped = true
+        activityIndicatorView?.activityIndicatorViewStyle = .gray
+        activityIndicatorView?.stopAnimating()
+        addSubview(activityIndicatorView!)
+    }
+    
+    private func initStatusImageView() {
+        let size = CGSize(width: 20, height: 20)
+        let origin = CGPoint(x: bounds.width - size.width - 10, y: (bounds.height - size.height) / 2)
+        let rect = CGRect(origin: origin, size: size)
+        statusImageView = UIImageView(frame: rect)
+        addSubview(statusImageView!)
     }
     
     private func initToggleSecureTextButton() {
@@ -300,3 +357,4 @@ extension KohanaTextField: UITextFieldDelegate {
         return  textFieldDelegate?.textFieldShouldReturn?(textField) ?? true
     }
 }
+
