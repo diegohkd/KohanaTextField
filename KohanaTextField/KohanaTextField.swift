@@ -198,6 +198,9 @@ public class KohanaTextField: UIView {
             let textFieldRect = CGRect(x: 44, y: 0, width: bounds.width - 56, height: bounds.height)
             textField?.frame = textFieldRect
         }
+        
+        updateStatusImageViewFrame()
+        updateActivityIndicatorViewFrame()
     }
     
     private func commonInit() {
@@ -234,10 +237,7 @@ public class KohanaTextField: UIView {
     }
     
     private func initActivityIndicatorView() {
-        let size = CGSize(width: 20, height: 20)
-        let origin = CGPoint(x: bounds.width - size.width - 10, y: (bounds.height - size.height) / 2)
-        let rect = CGRect(origin: origin, size: size)
-        activityIndicatorView = UIActivityIndicatorView(frame: rect)
+        activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView?.hidesWhenStopped = true
         activityIndicatorView?.activityIndicatorViewStyle = .gray
         activityIndicatorView?.stopAnimating()
@@ -245,11 +245,22 @@ public class KohanaTextField: UIView {
     }
     
     private func initStatusImageView() {
+        statusImageView = UIImageView()
+        addSubview(statusImageView!)
+    }
+    
+    private func updateStatusImageViewFrame() {
         let size = CGSize(width: 20, height: 20)
         let origin = CGPoint(x: bounds.width - size.width - 10, y: (bounds.height - size.height) / 2)
         let rect = CGRect(origin: origin, size: size)
-        statusImageView = UIImageView(frame: rect)
-        addSubview(statusImageView!)
+        statusImageView?.frame = rect
+    }
+    
+    private func updateActivityIndicatorViewFrame() {
+        let size = CGSize(width: 20, height: 20)
+        let origin = CGPoint(x: bounds.width - size.width - 10, y: (bounds.height - size.height) / 2)
+        let rect = CGRect(origin: origin, size: size)
+        activityIndicatorView?.frame = rect
     }
     
     private func initToggleSecureTextButton() {
