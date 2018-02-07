@@ -316,11 +316,11 @@ public class KohanaTextField: UIView {
         }
     }
     
-    func showSecureTextClicked() {
+    @objc func showSecureTextClicked() {
         isSecureTextEntry = !isSecureTextEntry
     }
     
-    func requestFocus() {
+    @objc func requestFocus() {
         textField?.becomeFirstResponder()
     }
 }
